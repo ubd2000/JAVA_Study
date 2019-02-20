@@ -99,14 +99,16 @@ public class Machine { //자판기
         
     	return tempCoffee;
     }
-    public void displaySum() { // 금액 표시
+    public void displaySum(Coffee coffee) { // 금액 표시
+        int result = coffee.getCoffeePrice();
+        System.out.printf("가격은 %d원입니다", result);
         
     }
     public void selectCoffee() { // 커피선택
         //setUserRecipe();
     }
     public void displayCoffee() { // 커피표시
-        displaySum();
+        //displaySum();
     }
     
     public void refund() {
@@ -164,8 +166,7 @@ public class Machine { //자판기
     public void Coffee() {
     	Coffee c = displayMenu();
     	c = setUserRecipe(c);
-    	System.out.println(c);
-    	//displaySum(c);
+    	displaySum(c);
 //    	displaySum(Coffee c)
 //    	print(c.getCoffeePrice())
     }
