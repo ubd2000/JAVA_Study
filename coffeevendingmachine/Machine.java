@@ -125,19 +125,6 @@ public class Machine { // 자판기
 		}
 	}
 
-	public void displayMenu1() { // 메뉴
-		displayCoffee();
-		selectCoffee();
-	}
-
-	public void selectCoffee() { // 커피선택
-		// setUserRecipe();
-	}
-
-	public void displayCoffee() { // 커피표시
-		// displaySum();
-	}
-
 	public Coffee displayMenu() { // 메뉴
 		System.out.println("┌─────────────┐");
 		System.out.println("│  커 피  메 뉴	  │");
