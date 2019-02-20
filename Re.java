@@ -64,7 +64,7 @@ public class Re {
 		score[2] = Integer.parseInt(sc.nextLine());
 		
 		int sum=0;
-		double avg=0;
+		double avg=0.0;
 		
 		for(int i=0; i<score.length; i++) {
 			sum += score[i];
