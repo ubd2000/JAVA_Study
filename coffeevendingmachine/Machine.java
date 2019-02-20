@@ -24,7 +24,7 @@ public class Machine { // 자판기
 		coffees = new Coffee[] { new Coffee("아메리카노", 1, recipes[0], 1500), new Coffee("카푸치노", 2, recipes[1], 2000),
 				new Coffee("카페라떼", 3, recipes[2], 2500) };
 	}
-	
+
 	public void Coffee() {
 		Coffee c = displayMenu();
 		c = setUserRecipe(c);
@@ -44,7 +44,7 @@ public class Machine { // 자판기
 				coffees[2].getCoffeeName());
 		System.out.println();
 		int coffee1 = Integer.parseInt(sc.nextLine());
-	exit:	while (true) {
+		exit: while (true) {
 			switch (coffee1) {
 			case 1:
 				System.out.println(coffees[0].getCoffeeName());
@@ -52,8 +52,9 @@ public class Machine { // 자판기
 					System.out.printf("[%d] 원두 > 우유 > 설탕 > 물 순입니다.", i + 1);
 					recipes[0][i] = Integer.parseInt(sc.nextLine());
 				}
-				System.out.printf("[%d],[%d],[%d],[%d] 바뀐 레시피입니다.",recipes[0][0],recipes[0][1],recipes[0][2],recipes[0][3]);
-				//admin();
+				System.out.printf("[%d],[%d],[%d],[%d] 바뀐 레시피입니다.", recipes[0][0], recipes[0][1], recipes[0][2],
+						recipes[0][3]);
+				// admin();
 				break exit;
 			case 2:
 				System.out.println(coffees[1].getCoffeeName());
@@ -61,8 +62,9 @@ public class Machine { // 자판기
 					System.out.printf("[%d] 원두 > 우유 > 설탕 > 물 순입니다.", i + 1);
 					recipes[1][i] = Integer.parseInt(sc.nextLine());
 				}
-				System.out.printf("[%d],[%d],[%d],[%d] 바뀐 레시피입니다.",recipes[1][0],recipes[1][1],recipes[1][2],recipes[1][3]);
-				//admin();
+				System.out.printf("[%d],[%d],[%d],[%d] 바뀐 레시피입니다.", recipes[1][0], recipes[1][1], recipes[1][2],
+						recipes[1][3]);
+				// admin();
 				break exit;
 			case 3:
 				System.out.println(coffees[2].getCoffeeName());
@@ -70,8 +72,9 @@ public class Machine { // 자판기
 					System.out.printf("[%d] 원두 > 우유 > 설탕 > 물 순입니다.", i + 1);
 					recipes[2][i] = Integer.parseInt(sc.nextLine());
 				}
-				System.out.printf("[%d],[%d],[%d],[%d] 바뀐 레시피입니다.",recipes[2][0],recipes[2][1],recipes[2][2],recipes[2][3]);
-				//admin();
+				System.out.printf("[%d],[%d],[%d],[%d] 바뀐 레시피입니다.", recipes[2][0], recipes[2][1], recipes[2][2],
+						recipes[2][3]);
+				// admin();
 				break exit;
 			default:
 				System.out.println("잘못 입력하였습니다.");
@@ -90,18 +93,18 @@ public class Machine { // 자판기
 		if (numbers == 1) {
 			System.out.println("변경할 이름을 입력해주세요 :");
 			coffees[0].setCoffeeName(sc.nextLine());
-			System.out.println("바뀐이름 :"+coffees[0].getCoffeeName());
-			//admin();
+			System.out.println("바뀐이름 :" + coffees[0].getCoffeeName());
+			// admin();
 		} else if (numbers == 2) {
 			System.out.println("변경할 이름을 입력해주세요 :");
 			coffees[1].setCoffeeName(sc.nextLine());
-			System.out.println("바뀐이름 :"+coffees[1].getCoffeeName());
-			//admin();
+			System.out.println("바뀐이름 :" + coffees[1].getCoffeeName());
+			// admin();
 		} else if (numbers == 3) {
 			System.out.println("변경할 이름을 입력해주세요 :");
 			coffees[2].setCoffeeName(sc.nextLine());
-			System.out.println("바뀐이름 :"+coffees[2].getCoffeeName());
-			//admin();
+			System.out.println("바뀐이름 :" + coffees[2].getCoffeeName());
+			// admin();
 		} else {
 			System.out.println("잘못 입력하였습니다.");
 			setCoffeeName();
@@ -110,7 +113,7 @@ public class Machine { // 자판기
 
 	public void displaySales() { // 매출확인
 		System.out.printf("현재까지 커피 매출은 [%d]입니다.", sales);
-		//admin();
+		// admin();
 	}
 
 	public void enterAdmin(int password) { // 관리자모드 접근
@@ -246,20 +249,25 @@ public class Machine { // 자판기
 		int result;
 		sc = new Scanner(System.in);
 		System.out.println("돈을 넣으세용");
-		inputMoney = Integer.parseInt(sc.nextLine());
+
+		do {
+			try {
+				inputMoney = Integer.parseInt(sc.nextLine());
+				break;
+			} catch (NumberFormatException e) {
+				System.out.println("다시 입력해주세요");
+			}
+		} while (true);
 
 		if (inputMoney < coffee.getCoffeePrice()) {
 			System.out.println("금액이 부족합니다");
-			System.out.println();
 			result = inputMoney;
 		} else {
 
 			System.out.println(inputMoney + "원을 넣으셨습니다.");
-			System.out.println();
 			result = inputMoney - coffee.getCoffeePrice();
 
-			System.out.println("잔액은 " + result + "원입니다");
-			System.out.println();
+			System.out.println("잔액은 " + result + "입니다");
 		}
 
 		int unit = 10000;
