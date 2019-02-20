@@ -12,7 +12,7 @@ public class Machine { //자판기
     private int[] inputMoney; // 받는돈 단위
     private int[] size; // 사이즈
     private int[][] recipes;
-    public Coffee[] coffees;
+    private Coffee[] coffees;
     
     public Machine() {
     	password = 1234;
@@ -53,14 +53,21 @@ public class Machine { //자판기
             displayMenu();
         }
     }
-    public void displayMenu() { // 메뉴
+    public void displayMenu1() { // 메뉴
         displayCoffee();
         selectCoffee();
     }
+    
     public Coffee setUserRecipe(Coffee coffee) { //재료량 조절
         String[] recipeName = {"원두", "우유", "설탕", "물"};
-        int[] tempRecipe = coffee.getRecipe();
-        Coffee tempCoffee = coffee;
+        int[] tempRecipe = new int[4];
+        for (int i = 0; i < tempRecipe.length; i++) {
+        	tempRecipe[i] = coffee.getRecipe()[i];
+        }
+        Coffee tempCoffee = new Coffee(coffee.getCoffeeName(), coffee.getCoffeeId(), tempRecipe, coffee.getCoffeePrice());
+        
+        
+        System.out.printf("%s 커피를 선택하셨습니다.\n", tempCoffee.getCoffeeName());
         
         for (int i = 0; i < tempRecipe.length; i++) {
         	if (tempRecipe[i] != 0) {
@@ -86,9 +93,9 @@ public class Machine { //자판기
         		}
         	}
         }
-        for (int i = 0; i < tempRecipe.length; i++) {
-        	System.out.println(tempRecipe[i]);
-        }
+//        for (int i = 0; i < tempRecipe.length; i++) {
+//        	System.out.print(tempRecipe[i] + " ");
+//        }
         
     	return tempCoffee;
     }
@@ -104,6 +111,63 @@ public class Machine { //자판기
     
     public void refund() {
     	
+    }
+    
+    public Coffee displayMenu() { //메뉴
+    	System.out.println("┌─────────────┐");
+		System.out.println("│  커 피  메 뉴	  │");
+		System.out.println("│=============│");
+		System.out.println("│ 1.아메리카노	  │");
+		System.out.println("│	          │");
+		System.out.println("│ 2.카푸치노	  │");
+		System.out.println("│			  │");
+		System.out.println("│ 3.카페모카	  │");
+		System.out.println("│-------------│");
+		System.out.println("│ 4. 종  료	  │");
+		System.out.println("└─────────────┘");
+
+		
+		int menu = 0;
+		do {
+			try {
+				Scanner sc = new Scanner(System.in);
+				System.out.println("메뉴를 선택해 주세요.");
+				menu = Integer.parseInt(sc.nextLine());
+				if (menu >= 1 && menu <= 4) {
+					break;
+				} else {
+					throw new Exception("문제발생");
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.println("메뉴를 잘못 선택했어요");
+				System.out.println("1,2,3,4 중에 선택해주세요");
+			}
+		} while (true);
+
+		
+		Coffee c = null;
+		switch (menu) {
+		case 1: c=coffees[0]; break;
+		case 2: c=coffees[1]; break;
+		case 3: c=coffees[2]; break; 
+		case 4: System.exit(0); break;
+		}
+		
+        //displayCoffee();
+        //selectCoffee();
+        
+		//System.out.println("c: "+c);
+        return c;
+    }
+    
+    public void Coffee() {
+    	Coffee c = displayMenu();
+    	c = setUserRecipe(c);
+    	System.out.println(c);
+    	//displaySum(c);
+//    	displaySum(Coffee c)
+//    	print(c.getCoffeePrice())
     }
     
 }
