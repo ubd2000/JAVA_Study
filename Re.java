@@ -2,8 +2,8 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 /*
- * °´Ã¼¶õ Èü ¸Ş¸ğ¸®¿¡ ÇØ´çÇÏ´Â °Í¸¸ÀÎ°Ç°¡?
- * °´Ã¼¶õ Å¬·ª½º¸¸ 
+ * ê°ì²´ë€ í™ ë©”ëª¨ë¦¬ì— í•´ë‹¹í•˜ëŠ” ê²ƒë§Œì¸ê±´ê°€?
+ * ê°ì²´ë€ í´ë´ìŠ¤ë§Œ 
  * 
  */
 
@@ -27,54 +27,51 @@ public class Re {
 		objarr[0] = new Person9();
 		System.out.println(Arrays.toString(objarr));
 
-		// °´Ã¼´Â ¹è¿­À» ÀÚ¸®¸¦ ¸¸µé°í, ÁÖ¼Ò°ªÀ» ³Ö°í
-		// 2¹ø ÀÛ¾÷ÇØ¾ßÇÑ´Ù.
-		objarr[0].name = "È«±æµ¿";
+		// ê°ì²´ëŠ” ë°°ì—´ì„ ìë¦¬ë¥¼ ë§Œë“¤ê³ , ì£¼ì†Œê°’ì„ ë„£ê³ 
+		// 2ë²ˆ ì‘ì—…í•´ì•¼í•œë‹¤.
+		objarr[0].name = "í™ê¸¸ë™";
 		objarr[0].age = 100;
 		System.out.println(objarr[0].name + objarr[0].age);
 
 		
 		
-		// 1. 1~10±îÁöÀÇ Â¦¼öÀÇ ÇÕÀ» Ãâ·ÂÇÏ½Ã¿À.
+		// 1. 1~10ê¹Œì§€ì˜ ì§ìˆ˜ì˜ í•©ì„ ì¶œë ¥í•˜ì‹œì˜¤.
 		int[] num = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 		for (int i = 0; i < num.length; i++) {
 			if (i % 2 != 0) {
 				num[i] += i;
-				System.out.println("1~10±îÁöÀÇ Â¦¼öÀÇ ÇÕ:" + num[i]);
+				System.out.println("1~10ê¹Œì§€ì˜ ì§ìˆ˜ì˜ í•©:" + num[i]);
 			}
 		}
 
-		// 2. 1~10±îÁö ¼ıÀÚ Áß 2ÀÇ ¹è¼öÀÇ ÇÕÀ» Ãâ·ÂÇÏ½Ã¿À.
+		// 2. 1~10ê¹Œì§€ ìˆ«ì ì¤‘ 2ì˜ ë°°ìˆ˜ì˜ í•©ì„ ì¶œë ¥í•˜ì‹œì˜¤.
 		int[] num2 = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 		for (int i = 0; i < num2.length; i++) {
 			if (i % 2 != 0) {
 				num2[i] += i;
-				System.out.println("1~10±îÁöÀÇ 2ÀÇ ¹è¼öÀÇ ÇÕ:" + num2[i]);
+				System.out.println("1~10ê¹Œì§€ì˜ 2ì˜ ë°°ìˆ˜ì˜ í•©:" + num2[i]);
 			}
 		}
 		
-		// 3. ¼öÇĞ,¿µ¾î,±¹¾î Á¡¼ö¸¦ ÀÔ·Â¹Ş¾Æ Æò±ÕÀ» ±¸ÇÏ°í Ãâ·ÂÇÏ½Ã¿À
-		Scanner sc = new Scanner(System.in);
-		System.out.println("¼öÇĞÁ¡¼öÀÔ·Â: ");
-		int mat = Integer.parseInt(sc.nextLine());
-		System.out.println("¿µ¾îÁ¡¼öÀÔ·Â: ");
-		int eng = Integer.parseInt(sc.nextLine());
-		System.out.println("±¹¾îÁ¡¼öÀÔ·Â: ");
-		int kor = Integer.parseInt(sc.nextLine());
-		
+		// 3. ìˆ˜í•™,ì˜ì–´,êµ­ì–´ ì ìˆ˜ë¥¼ ì…ë ¥ë°›ì•„ í‰ê· ì„ êµ¬í•˜ê³  ì¶œë ¥í•˜ì‹œì˜¤
 		int[] score = {mat,eng,kor};
+		Scanner sc = new Scanner(System.in);
+		System.out.println("ìˆ˜í•™ì ìˆ˜ì…ë ¥: ");
+		score[0] = Integer.parseInt(sc.nextLine());
+		System.out.println("ì˜ì–´ì ìˆ˜ì…ë ¥: ");
+		score[1] = Integer.parseInt(sc.nextLine());
+		System.out.println("êµ­ì–´ì ìˆ˜ì…ë ¥: ");
+		score[2] = Integer.parseInt(sc.nextLine());
+		
 		int sum=0;
-		int avg=0;
+		double avg=0;
 		
 		for(int i=0; i<score.length; i++) {
 			sum += score[i];
-			if(i==score.length-1) {
-				avg = sum/3;
-			}
 		}
-		
-		System.out.println("¼öÇĞ: "+mat+"/ ¿µ¾î: "+eng+"/ ±¹¾î: "+kor
-				+"\n/ÃÑÇÕ: "+sum+"/ Æò±Õ:"+avg);
+		avg = (double)sum / score.length-1;
+		System.out.println("ìˆ˜í•™: "+score[0]+"/ ì˜ì–´: "+score[1]+"/ êµ­ì–´: "+score[2]
+				+"\n/ì´í•©: "+sum+"/ í‰ê· :"+avg);
 				
 		
 	}
