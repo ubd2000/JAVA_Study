@@ -9,7 +9,7 @@ public class Machine { // 자판기
 	private static int sales; // 매출(누적)
 	private static int[] maxRecipe = new int[] { 200, 1000, 50, 1000 };; // 최대 재료량(재료가 많아서 배열선택)
 	// private int changeMoney; // 거스름돈 단위
-	private int inputMoney; // 받는돈 단위
+	private int inputMoney; // 받은 돈
 	private int[] size; // 사이즈
 	private int[][] recipes;
 	private Coffee[] coffees;
