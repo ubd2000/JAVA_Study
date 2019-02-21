@@ -8,7 +8,7 @@ public class Machine { // 자판기
 	private boolean power; // 전원
 	private static int sales; // 매출(누적)
 	private static int[] maxRecipe = new int[] { 200, 1000, 50, 1000 };; // 최대 재료량(재료가 많아서 배열선택)
-	private int changeMoney; // 거스름돈 단위
+	// private int changeMoney; // 거스름돈 단위
 	private int inputMoney; // 받는돈 단위
 	private int[] size; // 사이즈
 	private int[][] recipes;
@@ -25,7 +25,7 @@ public class Machine { // 자판기
 				new Coffee("카페라떼", 3, recipes[2], 2500) };
 	}
 
-	public void Coffee() {
+	public void vendingMachine() {
 		while (true) {
 		Coffee c = displayMenu();
 		if (c == null)
@@ -36,7 +36,7 @@ public class Machine { // 자판기
 		}
 	}
 
-	public void admin() { // 관리자모드
+	private void admin() { // 관리자 모드
 		System.out.println("┌─────────────┐");
 		System.out.println("│  커 피  메 뉴	  │");
 		System.out.println("│=============│");
@@ -76,12 +76,12 @@ public class Machine { // 자판기
 		}
 	}
 
-	public void displaySales() { // 매출확인
+	private void displaySales() { // 매출 확인
 		System.out.printf("현재까지 커피 매출은 [%d]입니다.", sales);
 		admin();
 	}
 
-	public void setRecipe() { // 재료량 설정
+	private void setRecipe() { // 재료량 설정
 		System.out.println("바꾸실 재료의 커피를 선택해주세요.");
 		System.out.printf("1.[%s] ,2[%s] ,3[%s]", coffees[0].getCoffeeName(), coffees[1].getCoffeeName(),
 				coffees[2].getCoffeeName());
@@ -124,7 +124,7 @@ public class Machine { // 자판기
 		admin();
 	}
 
-	public void setCoffeeName() {// 커피종류 변경
+	private void setCoffeeName() {// 커피종류 변경
 		System.out.printf("1.[%s], 2.[%s], 3.[%s]", coffees[0].getCoffeeName(), coffees[1].getCoffeeName(),
 				coffees[2].getCoffeeName());
 		System.out.println();
@@ -149,7 +149,7 @@ public class Machine { // 자판기
 		admin();
 	}
 
-	public Coffee displayMenu() { // 메뉴
+	private Coffee displayMenu() { // 메뉴
 		System.out.println("┌─────────────┐");
 		System.out.println("│  커 피  메 뉴   ");
 		System.out.println("│=============");
@@ -198,7 +198,7 @@ public class Machine { // 자판기
 		return c;
 	}
 
-	public Coffee setUserRecipe(Coffee coffee) { // 재료량 조절
+	private Coffee setUserRecipe(Coffee coffee) { // 재료량 조절
 		String[] recipeName = { "원두", "우유", "설탕", "물" };
 		int[] tempRecipe = new int[4];
 		for (int i = 0; i < tempRecipe.length; i++) {
@@ -254,14 +254,14 @@ public class Machine { // 자판기
 		return tempCoffee;
 	}
 
-	public void displaySum(Coffee coffee) { // 금액 표시
+	private void displaySum(Coffee coffee) { // 금액 표시
 		int result = coffee.getCoffeePrice();
 		System.out.printf("가격은 %d원입니다\n", result);
 		System.out.println();
 
 	}
 
-	public void refund(Coffee coffee) {
+	private void refund(Coffee coffee) { // 계산
 		int result;
 		sc = new Scanner(System.in);
 		System.out.println("돈을 넣으세용");
@@ -282,6 +282,7 @@ public class Machine { // 자판기
 
 			System.out.println(inputMoney + "원을 넣으셨습니다.");
 			result = inputMoney - coffee.getCoffeePrice();
+			sales += coffee.getCoffeePrice();
 
 			System.out.println("잔액은 " + result + "입니다");
 		}
