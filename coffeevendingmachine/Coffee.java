@@ -7,6 +7,13 @@ public class Coffee {
 	private int coffeeId;      // 커피 고유번호
 	private int[] recipe;      // 커피 재료 사용량
 	private int coffeePrice;   // 커피 가격
+	
+	public Coffee(String coffeeName, int coffeeId, int[] recipe, int coffeePrice) { // 커피 생성자 함수
+		this.coffeeName = coffeeName;
+		this.coffeeId = coffeeId;
+		this.recipe = recipe;
+		this.coffeePrice = coffeePrice;
+	}
 
 	public String getCoffeeName() {
 		return coffeeName;
@@ -14,12 +21,6 @@ public class Coffee {
 
 	public void setCoffeeName(String coffeeName) {
 		this.coffeeName = coffeeName;
-	}
-
-	@Override
-	public String toString() {
-		return "Coffee [coffeeName=" + coffeeName + ", coffeeId=" + coffeeId + ", recipe=" + Arrays.toString(recipe)
-				+ ", coffeePrice=" + coffeePrice + "]";
 	}
 
 	public int getCoffeeId() {
@@ -35,13 +36,6 @@ public class Coffee {
 	}
 
 	public void setCoffeePrice(int coffeePrice) {
-		this.coffeePrice = coffeePrice;
-	}
-
-	public Coffee(String coffeeName, int coffeeId, int[] recipe, int coffeePrice) { // 커피 생성자 함수
-		this.coffeeName = coffeeName;
-		this.coffeeId = coffeeId;
-		this.recipe = recipe;
 		this.coffeePrice = coffeePrice;
 	}
 

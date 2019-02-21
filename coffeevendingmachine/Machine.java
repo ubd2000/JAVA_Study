@@ -26,14 +26,18 @@ public class Machine { // 자판기
 	}
 
 	public void Coffee() {
+		while (true) {
 		Coffee c = displayMenu();
+		if (c == null)
+			continue;
 		c = setUserRecipe(c);
 		displaySum(c);
 		refund(c);
+		}
 	}
 
 	public void admin() { // 관리자모드
-	  	System.out.println("┌─────────────┐");
+		System.out.println("┌─────────────┐");
 		System.out.println("│  커 피  메 뉴	  │");
 		System.out.println("│=============│");
 		System.out.println("│ 1.재료량 설정	  │");
@@ -45,29 +49,33 @@ public class Machine { // 자판기
 		System.out.println("│ 4. 종  료	  │");
 		System.out.println("└─────────────┘");
 
-			
-			int menu = 0;
-			do {
-				try {
-					Scanner sc = new Scanner(System.in);
-					System.out.println("메뉴를 선택해 주세요.");
-					menu = Integer.parseInt(sc.nextLine());
-					break;
-				}catch(NumberFormatException e){
-					System.out.println("다시 입력해주세요");
-				}
-				} while(true);
-
-			
-			switch (menu) {
-			case 1: setRecipe(); break;
-			case 2: setCoffeeName(); break;
-			case 3: displaySales(); break; 
-			case 4: System.exit(0); break;
+		int menu = 0;
+		do {
+			try {
+				Scanner sc = new Scanner(System.in);
+				System.out.println("메뉴를 선택해 주세요.");
+				menu = Integer.parseInt(sc.nextLine());
+				break;
+			} catch (NumberFormatException e) {
+				System.out.println("다시 입력해주세요");
 			}
-	    }
-	
-	
+		} while (true);
+
+		switch (menu) {
+		case 1:
+			setRecipe();
+			break;
+		case 2:
+			setCoffeeName();
+			break;
+		case 3:
+			displaySales();
+			break;
+		case 4:
+			break;
+		}
+	}
+
 	public void displaySales() { // 매출확인
 		System.out.printf("현재까지 커피 매출은 [%d]입니다.", sales);
 		admin();
@@ -79,7 +87,7 @@ public class Machine { // 자판기
 				coffees[2].getCoffeeName());
 		System.out.println();
 		int coffee1 = Integer.parseInt(sc.nextLine());
-	exit:	while (true) {
+		exit: while (true) {
 			switch (coffee1) {
 			case 1:
 				System.out.println(coffees[0].getCoffeeName());
@@ -87,7 +95,8 @@ public class Machine { // 자판기
 					System.out.printf("[%d] 원두 > 우유 > 설탕 > 물 순입니다.", i + 1);
 					recipes[0][i] = Integer.parseInt(sc.nextLine());
 				}
-				System.out.printf("[%d],[%d],[%d],[%d] 바뀐 레시피입니다.",recipes[0][0],recipes[0][1],recipes[0][2],recipes[0][3]);
+				System.out.printf("[%d],[%d],[%d],[%d] 바뀐 레시피입니다.", recipes[0][0], recipes[0][1], recipes[0][2],
+						recipes[0][3]);
 				break exit;
 			case 2:
 				System.out.println(coffees[1].getCoffeeName());
@@ -95,7 +104,8 @@ public class Machine { // 자판기
 					System.out.printf("[%d] 원두 > 우유 > 설탕 > 물 순입니다.", i + 1);
 					recipes[1][i] = Integer.parseInt(sc.nextLine());
 				}
-				System.out.printf("[%d],[%d],[%d],[%d] 바뀐 레시피입니다.",recipes[1][0],recipes[1][1],recipes[1][2],recipes[1][3]);
+				System.out.printf("[%d],[%d],[%d],[%d] 바뀐 레시피입니다.", recipes[1][0], recipes[1][1], recipes[1][2],
+						recipes[1][3]);
 				break exit;
 			case 3:
 				System.out.println(coffees[2].getCoffeeName());
@@ -103,7 +113,8 @@ public class Machine { // 자판기
 					System.out.printf("[%d] 원두 > 우유 > 설탕 > 물 순입니다.", i + 1);
 					recipes[2][i] = Integer.parseInt(sc.nextLine());
 				}
-				System.out.printf("[%d],[%d],[%d],[%d] 바뀐 레시피입니다.",recipes[2][0],recipes[2][1],recipes[2][2],recipes[2][3]);
+				System.out.printf("[%d],[%d],[%d],[%d] 바뀐 레시피입니다.", recipes[2][0], recipes[2][1], recipes[2][2],
+						recipes[2][3]);
 				break exit;
 			default:
 				System.out.println("잘못 입력하였습니다.");
@@ -111,7 +122,6 @@ public class Machine { // 자판기
 
 		}
 		admin();
-
 	}
 
 	public void setCoffeeName() {// 커피종류 변경
@@ -123,48 +133,31 @@ public class Machine { // 자판기
 		if (numbers == 1) {
 			System.out.println("변경할 이름을 입력해주세요 :");
 			coffees[0].setCoffeeName(sc.nextLine());
-			System.out.println("바뀐이름 :"+coffees[0].getCoffeeName());
+			System.out.println("바뀐이름 :" + coffees[0].getCoffeeName());
 		} else if (numbers == 2) {
 			System.out.println("변경할 이름을 입력해주세요 :");
 			coffees[1].setCoffeeName(sc.nextLine());
-			System.out.println("바뀐이름 :"+coffees[1].getCoffeeName());
+			System.out.println("바뀐이름 :" + coffees[1].getCoffeeName());
 		} else if (numbers == 3) {
 			System.out.println("변경할 이름을 입력해주세요 :");
 			coffees[2].setCoffeeName(sc.nextLine());
-			System.out.println("바뀐이름 :"+coffees[2].getCoffeeName());
+			System.out.println("바뀐이름 :" + coffees[2].getCoffeeName());
 		} else {
 			System.out.println("잘못 입력하였습니다.");
 			setCoffeeName();
 		}
-<<<<<<< HEAD
-	}
-
-	public void displaySales() { // 매출확인
-		System.out.printf("현재까지 커피 매출은 [%d]입니다.", sales);
-		// admin();
-	}
-
-	public void enterAdmin(int password) { // 관리자모드 접근
-		if (this.password == password) {
-			admin();
-		} else {
-			System.out.println("잘못된 접근입니다.");
-			displayMenu();
-		}
-=======
 		admin();
->>>>>>> f00c82e81e57cf74f39deea7259b2ea32a00cbd2
 	}
 
 	public Coffee displayMenu() { // 메뉴
 		System.out.println("┌─────────────┐");
 		System.out.println("│  커 피  메 뉴   ");
 		System.out.println("│=============");
-		System.out.printf("│ 1  %s   \n",coffees[0].getCoffeeName());
+		System.out.printf("│ 1  %s   \n", coffees[0].getCoffeeName());
 		System.out.println("│             ");
-		System.out.printf("│ 2  %s    \n",coffees[1].getCoffeeName());
+		System.out.printf("│ 2  %s    \n", coffees[1].getCoffeeName());
 		System.out.println("│             ");
-		System.out.printf("│ 3  %s     \n",coffees[2].getCoffeeName());
+		System.out.printf("│ 3  %s     \n", coffees[2].getCoffeeName());
 		System.out.println("│-------------");
 		System.out.println("│ 4   종  료      ");
 		System.out.println("└─────────────┘");
@@ -177,15 +170,15 @@ public class Machine { // 자판기
 				menu = Integer.parseInt(sc.nextLine());
 				if (menu >= 1 && menu <= 4 || menu == password) {
 					break;
-				} 
+				}
 			} catch (Exception e) {
 				System.out.println("메뉴를 잘못 선택했어요");
 				System.out.println("1,2,3,4 중에 선택해주세요");
 			}
 		} while (true);
 
-		//this.password = password;
-		Coffee c = null ;
+		// this.password = password;
+		Coffee c = null;
 		switch (menu) {
 		case 1:
 			c = coffees[0];
@@ -218,9 +211,23 @@ public class Machine { // 자판기
 		System.out.println();
 		for (int i = 0; i < tempRecipe.length; i++) {
 			if (tempRecipe[i] != 0) {
-				System.out.printf("%s의 양을 선택해주세요.\n", recipeName[i]);
-				System.out.println("1. 기본 2. 적게 3. 많게");
-				int sizeSelect = Integer.parseInt(sc.nextLine());
+				int sizeSelect = 0;
+				do {
+					System.out.printf("%s의 양을 선택해주세요.\n", recipeName[i]);
+					System.out.println("1. 기본 2. 적게 3. 많게");
+					try {
+						sizeSelect = Integer.parseInt(sc.nextLine());
+						if (sizeSelect >=1 && sizeSelect <= 3) {
+							break;
+						} else {
+							throw new Exception();
+						}
+					} catch (Exception e) {
+						sizeSelect = 0;
+						break;
+					}
+				} while (true);
+				
 				switch (sizeSelect) {
 				case 1:
 					System.out.println("기본으로 설정했습니다.");
@@ -244,10 +251,6 @@ public class Machine { // 자판기
 				}
 			}
 		}
-//        for (int i = 0; i < tempRecipe.length; i++) {
-//        	System.out.print(tempRecipe[i] + " ");
-//        }
-
 		return tempCoffee;
 	}
 
