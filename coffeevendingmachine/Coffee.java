@@ -1,5 +1,7 @@
 package coffeevendingmachine;
 
+import java.util.Arrays;
+
 public class Coffee {
 	private String coffeeName; // 커피 이름
 	private int coffeeId;      // 커피 고유번호
@@ -12,6 +14,12 @@ public class Coffee {
 
 	public void setCoffeeName(String coffeeName) {
 		this.coffeeName = coffeeName;
+	}
+
+	@Override
+	public String toString() {
+		return "Coffee [coffeeName=" + coffeeName + ", coffeeId=" + coffeeId + ", recipe=" + Arrays.toString(recipe)
+				+ ", coffeePrice=" + coffeePrice + "]";
 	}
 
 	public int getCoffeeId() {
