@@ -6,6 +6,10 @@ public class Coffee {
 	private int coffeePrice;   // 커피 가격
 	private boolean ice = false;
 	
+	public boolean isIce() {
+		return ice;
+	}
+
 	public void setIce(boolean ice) {
 		this.ice = ice;
 	}
