@@ -5,14 +5,6 @@ public class Coffee {
 	private int[] recipe;      // 커피 재료 사용량
 	private int coffeePrice;   // 커피 가격
 	private boolean ice = false;
-	
-	public boolean isIce() {
-		return ice;
-	}
-
-	public void setIce(boolean ice) {
-		this.ice = ice;
-	}
 
 	public Coffee(String coffeeName, int[] recipe, int coffeePrice) { // 커피 생성자 함수
 		this.coffeeName = coffeeName;
@@ -20,6 +12,14 @@ public class Coffee {
 		this.coffeePrice = coffeePrice;
 	}
 
+	public boolean isIce() {
+		return ice;
+	}
+
+	public void setIce(boolean ice) {
+		this.ice = ice;
+	}
+	
 	public String getCoffeeName() {
 		return coffeeName;
 	}

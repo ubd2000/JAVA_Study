@@ -259,7 +259,7 @@ public class Machine { // 자판기
 
 	private void admin() { // 관리자 모드
 		System.out.println("┌──────────────");
-		System.out.println("│  커 피  메 뉴	  ");
+		System.out.println("│  관 리 자 메 뉴	  ");
 		System.out.println("│=============");
 		System.out.println("│ 1. 재료량 설정	  ");
 		System.out.println("│	          ");
@@ -337,6 +337,7 @@ public class Machine { // 자판기
 
 		}
 		System.out.println();
+		admin();
 	}
 
 	private void setCoffeeName() {// 커피 이름 변경
@@ -367,7 +368,8 @@ public class Machine { // 자판기
 			System.out.println("잘못 입력하셨습니다.");
 			setCoffeeName();
 		}	
-		System.out.println();	
+		System.out.println();
+		admin();
 	}
 
 	private void displaySales() { // 매출 확인
