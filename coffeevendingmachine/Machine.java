@@ -5,8 +5,8 @@ import java.util.Scanner;
 public class Machine { // 자판기
 	private Scanner sc = new Scanner(System.in);
 	private int password; // 관리자 모드 비밀번호
-	private static int sales; // 매출(누적)
-	private final int[] MAXSTOCK = new int[] { 200, 1000, 50, 1000 };; // 최대 재료량(재료가 많아서 배열선택)
+	private int sales; // 매출(누적)
+	private static final int[] MAXSTOCK = new int[] { 200, 1000, 50, 1000 };; // 최대 재료량(재료가 많아서 배열선택)
 	private int[] currentStock;
 	private int[] size; // 사이즈
 	private int[][] recipes; // 재료량
