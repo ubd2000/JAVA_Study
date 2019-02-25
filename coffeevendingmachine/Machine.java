@@ -6,13 +6,13 @@ public class Machine { // 자판기
 	private Scanner sc;
 	private int password; // 관리자 모드 비밀번호
 	private int sales; // 매출(누적)
-	private static final int[] MAXSTOCK = new int[] { 200, 1000, 50, 1000 };; // 최대 재료량(재료가 많아서 배열선택)
+	private static final int[] MAXSTOCK = new int[] { 200, 1000, 50, 1000 }; // 최대 재료량(재료가 많아서 배열선택)
 	private int[] currentStock; // 현재 재고
 	private int[] size; // 사이즈에 따른 변화량
 	private int[][] recipes; // 커피별 재료량
 	private Coffee coffeeOrder; // 주문하는 커피
-	public Coffee[] coffeeList; // 커피 정보 배열
-	String[] recipeName; // 재료 이름
+	private Coffee[] coffeeList; // 커피 정보 배열
+	private String[] recipeName; // 재료 이름
 
 	public Machine() { // 생성자 함수
 		sc = new Scanner(System.in);
