@@ -153,7 +153,7 @@ public class Machine { // 자판기
 	private void showOrder(Coffee coffee) { // 주문 내역 확인
 		Coffee original = null; // 재료량 비교를 위한 원래 커피를 찾는 부분
 		for (int i = 0; i < coffeeList.length; i++) {
-			if (coffee.getCoffeeName() == coffeeList[i].getCoffeeName()) { // 이름을 비교해서 같으면 원래 커피로 할당
+			if (coffee.getCoffeeName().equals(coffeeList[i].getCoffeeName())) { // 이름을 비교해서 같으면 원래 커피로 할당
 				original = coffeeList[i];
 				break;
 			}
